@@ -4,14 +4,14 @@
 
 using namespace std;
 
-bool check_T_Prime(int n) {
+bool check_T_Prime(int num) {
     int divisors = 0;
     int i;
-    for (i = 1; i * i <= n; i++) {//check up to the square root of the number
-        if (n % i == 0 && i*i != n)                 //if the number is divisible by i then add 2..why 2? 
-        divisors += 2;                             //Assume there exist x,y in Z+, such that x*y = n. Therefore,
-        if (i * i == n)                           // y|n & x|n. that's why we added 2 instead of looping over the whole array
-        divisors++;// here, if we reached the case where x=y, x*x = n, meaning that there is only one divisor.
+    for (i = 1; i * i <= num; i++) {//check up to the square root of the number
+        if (num % i == 0 && i*i != num)                 //if the number is divisible by i then add 2..why 2? 
+        divisors += 2;                             //Assume there exist x,y in Z+, such that x*y = num. Therefore,
+        if (i * i == num)                           // y|num & x|num. that's why we added 2 instead of looping over the whole array
+        divisors++;// here, if we reached the case where x=y, x*x = num, meaning that there is only one divisor.
     }
     
     return divisors == 3;//return true only when the divisors = 3
@@ -37,3 +37,6 @@ int main() {
     }
 return 0;
 }
+/* Time Analysis:
+the check_T_Prime takes O(sqrt(num)), and it is inside a loop that takes O(n). so the total time complexity would be O(n*sqrt(num))
+where n is the number of elemnts in the vector, and num is the number given as an argument to the check function */
